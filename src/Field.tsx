@@ -1,6 +1,7 @@
 import { Container, Grid, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { Buttons } from "./Components/Button";
+import './App.css';
 
 const Field = () => {
   const [value, setValue] = useState<string>("");
@@ -65,14 +66,19 @@ const Field = () => {
     if (value !== "") {
       let deletedNumber = value.slice(0, value.length - 1);
       setValue(deletedNumber);
+    } else {
+      setValue("");
+      setFunction("");
     }
   };
 
   const OnClickMath = () => {
-    console.log(value)
     if (func !== "") {
-        let x = parseInt(value);
-     
+      let x = value.split(/([())=/*+-])/g);
+      console.log(x);
+      let res = Math.abs(parseInt(x[0]) - parseInt(x[2]));
+      console.log(res);
+      setValue(String(res));
     }
   };
 
