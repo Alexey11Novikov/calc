@@ -7,54 +7,15 @@ const Field = () => {
   const [value, setValue] = useState<string>("");
   const [func, setFunction] = useState<string>("");
 
-  const OnClickBtn = (text: string) => {
-    switch (text) {
-      case "+":
-        if (func === "") {
-          writeText("+");
-        }
-        onClickSum("+");
-        break;
-      case "-":
-        if (func === "") {
-          writeText("-");
-        }
-        onClickDiffer("-");
-        break;
-      case "/":
-        if (func === "") {
-          writeText("/");
-        }
-        onClickDivis("/");
-        break;
-      case "*":
-        if (func === "") {
-          writeText("*");
-        }
-        onClickMult("*");
-        break;
+  const OnClickBtnFunc = (text: string) => {
+    if (func === "") {
+      writeText(text);
+      setFunction(text);
     }
   };
 
   const writeText = (text: string) => {
     setValue(`${(value + text).replace(/^0+/, "")}`);
-  };
-
-  // +
-  const onClickSum = (type: string) => {
-    setFunction(type);
-  };
-  // *
-  const onClickMult = (type: string) => {
-    setFunction(type);
-  };
-  // -
-  const onClickDiffer = (type: string) => {
-    setFunction(type);
-  };
-  // /
-  const onClickDivis = (type: string) => {
-    setFunction(type);
   };
 
   const onCleanBtr = () => {
@@ -75,12 +36,27 @@ const Field = () => {
   const OnClickMath = () => {
     if (func !== "") {
       let x = value.split(/([())=/*+-])/g);
-      console.log(x);
-      let res = Math.abs(parseInt(x[0]) - parseInt(x[2]));
-      console.log(res);
-      setValue(String(res));
+      let res = 0;
+      switch (func) {
+        case "+":
+          res = Math.abs(parseInt(x[0]) + parseInt(x[2]));
+          setValue(String(res));
+          break;
+        case "-":
+          res = Math.abs(parseInt(x[0]) - parseInt(x[2]));
+          setValue(String(res));
+          break;
+        case "/":
+          res = Math.abs(parseInt(x[0]) / parseInt(x[2]));
+          setValue(String(res));
+          break;
+        case "*":
+          res = Math.abs(parseInt(x[0]) * parseInt(x[2]));
+          setValue(String(res));
+          break;
+      }
     }
-  };
+  }
 
   return (
     <Container maxWidth="md">
@@ -94,16 +70,16 @@ const Field = () => {
           />
         </Grid>
         <Grid item xs={3} md={3}>
-          <Buttons symbol={"+"} onclick={() => OnClickBtn("+")} />
+          <Buttons symbol={"+"} onclick={() => OnClickBtnFunc("+")} />
         </Grid>
         <Grid item xs={3} md={3}>
-          <Buttons symbol={"*"} onclick={() => OnClickBtn("*")} />
+          <Buttons symbol={"*"} onclick={() => OnClickBtnFunc("*")} />
         </Grid>
         <Grid item xs={3} md={3}>
-          <Buttons symbol={"-"} onclick={() => OnClickBtn("-")} />
+          <Buttons symbol={"-"} onclick={() => OnClickBtnFunc("-")} />
         </Grid>
         <Grid item xs={3} md={3}>
-          <Buttons symbol={"/"} onclick={() => OnClickBtn("/")} />
+          <Buttons symbol={"/"} onclick={() => OnClickBtnFunc("/")} />
         </Grid>
         <Grid item xs={4} md={4}>
           <Buttons symbol={7} onclick={() => writeText("7")} />
