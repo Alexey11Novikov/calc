@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { ButtonNumber } from "./Components/ButtonNumber";
 import { ButtonFunction } from "./Components/ButtonFunction";
 import { ClearButton } from "./Components/ClearButton";
+import { Add, ArrowBack } from "@mui/icons-material";
 import "./index.css";
 
 const Field = () => {
@@ -115,7 +116,7 @@ const Field = () => {
             <ButtonNumber symbol={0} onclick={() => writeText("0")} />
           </Grid>
           <Grid item xs={3} md={3}>
-            <ClearButton symbol={"<-"} onclick={() => onClickBackBtn()} />
+            <ClearButton symbol=<ArrowBack/> onclick={() => onClickBackBtn()} />
           </Grid>
           <Grid item xs={3} md={3}>
             <ClearButton symbol={"Ce"} onclick={() => onCleanBtr()} />
