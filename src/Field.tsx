@@ -1,7 +1,9 @@
-import { Container, Grid, TextField } from "@mui/material";
+import { Container, Grid, TextField, Box } from "@mui/material";
 import React, { useState } from "react";
-import { Buttons } from "./Components/Button";
-import './App.css';
+import { ButtonNumber } from "./Components/ButtonNumber";
+import { ButtonFunction } from "./Components/ButtonFunction";
+import { ClearButton } from "./Components/ClearButton";
+import "./index.css";
 
 const Field = () => {
   const [value, setValue] = useState<string>("");
@@ -56,71 +58,73 @@ const Field = () => {
           break;
       }
     }
-  }
+  };
 
   return (
     <Container maxWidth="md">
-      <Grid container spacing={1}>
-        <Grid item xs={12}>
-          <TextField
-            id="field"
-            variant="outlined"
-            value={value}
-            style={{ width: "100%", margin: "5px" }}
-          />
+      <Box sx={{ bgcolor: "#535ba1", color: "background.paper", p: 2 }}>
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
+            <TextField
+              id="textField"
+              variant="outlined"
+              value={value}
+              className="Field"
+            />
+          </Grid>
+          <Grid item xs={3} md={3}>
+            <ButtonFunction symbol={"+"} onclick={() => OnClickBtnFunc("+")} />
+          </Grid>
+          <Grid item xs={3} md={3}>
+            <ButtonFunction symbol={"*"} onclick={() => OnClickBtnFunc("*")} />
+          </Grid>
+          <Grid item xs={3} md={3}>
+            <ButtonFunction symbol={"-"} onclick={() => OnClickBtnFunc("-")} />
+          </Grid>
+          <Grid item xs={3} md={3}>
+            <ButtonFunction symbol={"/"} onclick={() => OnClickBtnFunc("/")} />
+          </Grid>
+          <Grid item xs={4} md={4}>
+            <ButtonNumber symbol={7} onclick={() => writeText("7")} />
+          </Grid>
+          <Grid item xs={4} md={4}>
+            <ButtonNumber symbol={8} onclick={() => writeText("8")} />
+          </Grid>
+          <Grid item xs={4} md={4}>
+            <ButtonNumber symbol={9} onclick={() => writeText("9")} />
+          </Grid>
+          <Grid item xs={4} md={4}>
+            <ButtonNumber symbol={4} onclick={() => writeText("4")} />
+          </Grid>
+          <Grid item xs={4} md={4}>
+            <ButtonNumber symbol={5} onclick={() => writeText("5")} />
+          </Grid>
+          <Grid item xs={4} md={4}>
+            <ButtonNumber symbol={6} onclick={() => writeText("6")} />
+          </Grid>
+          <Grid item xs={4} md={4}>
+            <ButtonNumber symbol={1} onclick={() => writeText("1")} />
+          </Grid>
+          <Grid item xs={4} md={4}>
+            <ButtonNumber symbol={2} onclick={() => writeText("2")} />
+          </Grid>
+          <Grid item xs={4} md={4}>
+            <ButtonNumber symbol={3} onclick={() => writeText("3")} />
+          </Grid>
+          <Grid item xs={3} md={3}>
+            <ButtonNumber symbol={0} onclick={() => writeText("0")} />
+          </Grid>
+          <Grid item xs={3} md={3}>
+            <ClearButton symbol={"<-"} onclick={() => onClickBackBtn()} />
+          </Grid>
+          <Grid item xs={3} md={3}>
+            <ClearButton symbol={"Ce"} onclick={() => onCleanBtr()} />
+          </Grid>
+          <Grid item xs={3} md={3}>
+            <ButtonFunction symbol={"="} onclick={() => OnClickMath()} />
+          </Grid>
         </Grid>
-        <Grid item xs={3} md={3}>
-          <Buttons symbol={"+"} onclick={() => OnClickBtnFunc("+")} />
-        </Grid>
-        <Grid item xs={3} md={3}>
-          <Buttons symbol={"*"} onclick={() => OnClickBtnFunc("*")} />
-        </Grid>
-        <Grid item xs={3} md={3}>
-          <Buttons symbol={"-"} onclick={() => OnClickBtnFunc("-")} />
-        </Grid>
-        <Grid item xs={3} md={3}>
-          <Buttons symbol={"/"} onclick={() => OnClickBtnFunc("/")} />
-        </Grid>
-        <Grid item xs={4} md={4}>
-          <Buttons symbol={7} onclick={() => writeText("7")} />
-        </Grid>
-        <Grid item xs={4} md={4}>
-          <Buttons symbol={8} onclick={() => writeText("8")} />
-        </Grid>
-        <Grid item xs={4} md={4}>
-          <Buttons symbol={9} onclick={() => writeText("9")} />
-        </Grid>
-        <Grid item xs={4} md={4}>
-          <Buttons symbol={4} onclick={() => writeText("4")} />
-        </Grid>
-        <Grid item xs={4} md={4}>
-          <Buttons symbol={5} onclick={() => writeText("5")} />
-        </Grid>
-        <Grid item xs={4} md={4}>
-          <Buttons symbol={6} onclick={() => writeText("6")} />
-        </Grid>
-        <Grid item xs={4} md={4}>
-          <Buttons symbol={1} onclick={() => writeText("1")} />
-        </Grid>
-        <Grid item xs={4} md={4}>
-          <Buttons symbol={2} onclick={() => writeText("2")} />
-        </Grid>
-        <Grid item xs={4} md={4}>
-          <Buttons symbol={3} onclick={() => writeText("3")} />
-        </Grid>
-        <Grid item xs={3} md={3}>
-          <Buttons symbol={0} onclick={() => writeText("0")} />
-        </Grid>
-        <Grid item xs={3} md={3}>
-          <Buttons symbol={"<-"} onclick={() => onClickBackBtn()} />
-        </Grid>
-        <Grid item xs={3} md={3}>
-          <Buttons symbol={"Ce"} onclick={() => onCleanBtr()} />
-        </Grid>
-        <Grid item xs={3} md={3}>
-          <Buttons symbol={"="} onclick={() => OnClickMath()} />
-        </Grid>
-      </Grid>
+      </Box>
     </Container>
   );
 };
