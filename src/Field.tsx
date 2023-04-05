@@ -12,8 +12,10 @@ const Field = () => {
 
   const OnClickBtnFunc = (text: string) => {
     if (func === "") {
-      writeText(text);
-      setFunction(text);
+      if (value !== "") {
+        writeText(text);
+        setFunction(text);
+      }
     }
   };
 
@@ -116,7 +118,10 @@ const Field = () => {
             <ButtonNumber symbol={0} onclick={() => writeText("0")} />
           </Grid>
           <Grid item xs={3} md={3}>
-            <ClearButton symbol=<ArrowBack/> onclick={() => onClickBackBtn()} />
+            <ClearButton
+              symbol=<ArrowBack />
+              onclick={() => onClickBackBtn()}
+            />
           </Grid>
           <Grid item xs={3} md={3}>
             <ClearButton symbol={"Ce"} onclick={() => onCleanBtr()} />
