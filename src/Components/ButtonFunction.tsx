@@ -1,4 +1,5 @@
 import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 interface ButtonFunctionProps {
   symbol: any;
@@ -8,7 +9,9 @@ interface ButtonFunctionProps {
 export const ButtonFunction = ({ symbol, onclick }: ButtonFunctionProps) => {
   return (
     <Button variant="contained" color="secondary" onClick={onclick}>
-      {symbol}
+       <Typography variant="subtitle1">
+        {symbol}
+      </Typography>
     </Button>
   );
 };
