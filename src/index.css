@@ -26,10 +26,6 @@ Button {
   background-color: #535ba1;
 }
 
-.btnNumber {
-  
-}
-
-.btnFunction {
-
+Button{
+  height: 40px;
 }

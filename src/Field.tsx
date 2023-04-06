@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { ButtonNumber } from "./Components/ButtonNumber";
 import { ButtonFunction } from "./Components/ButtonFunction";
 import { ClearButton } from "./Components/ClearButton";
-import { Add, ArrowBack } from "@mui/icons-material";
+import { ArrowBack } from "@mui/icons-material";
 import "./index.css";
 
 const Field = () => {
